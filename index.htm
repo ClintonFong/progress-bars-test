@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/progressBarTest.css" />
+    </head>
+
+    <body>
+
+        <!-- progress bar container -->
+        <section id="progressbarContainer">
+            <script id="tpl-progress-bars" type='text/ractive'>
+
+                <h1>Progress Bar Test</h1>
+
+                <div id="progressBar0" class="progress-bar">
+                    <div class="bar positive" role="progressbar" aria-valuenow="{{ progressPercentages[0] }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progressPercentages[0] }}%; background-color: {{ currentBarColors[0] }}">
+                        <span style="width:{{ progressBarWidthOnScreen }}px; visibility:{{ valueDisplayVisibility }}">{{ progressPercentages[0] }}%</span>
+                    </div>
+                    <div class="bar negative" style="width:{{ 100 - progressPercentages[0] }}%">
+                        <span style="width:{{ progressBarWidthOnScreen }}px; visibility:{{ valueDisplayVisibility }}">{{ progressPercentages[0] }}%</span>
+                    </div>
+                </div>
+
+                <div id="progressBar1" class="progress-bar">
+                    <div class="bar positive" role="progressbar" aria-valuenow="{{ progressPercentages[1] }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progressPercentages[1] }}%; background-color: {{ currentBarColors[1] }}">
+                        <span style="width:{{ progressBarWidthOnScreen }}px; visibility:{{ valueDisplayVisibility }}">{{ progressPercentages[1] }}%</span>
+                    </div>
+                    <div class="bar negative" style="width:{{ 100 - progressPercentages[1] }}%">
+                        <span style="width:{{ progressBarWidthOnScreen }}px; visibility:{{ valueDisplayVisibility }}">{{ progressPercentages[1] }}%</span>
+                    </div>
+                </div>
+
+                <div id="progressBar2" class="progress-bar">
+                    <div class="bar positive" role="progressbar" aria-valuenow="{{ progressPercentages[2] }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progressPercentages[2] }}%; background-color: {{ currentBarColors[2] }}">
+                        <span style="width:{{ progressBarWidthOnScreen }}px; visibility:{{ valueDisplayVisibility }}">{{ progressPercentages[2] }}%</span>
+                    </div>
+                    <div class="bar negative" style="width:{{ 100 - progressPercentages[2] }}%">
+                        <span style="width:{{ progressBarWidthOnScreen }}px; visibility:{{ valueDisplayVisibility }}">{{ progressPercentages[2] }}%</span>
+                    </div>
+                </div>
+
+            </script>
+        </section>
+
+        <!-- test controls -->
+        <section id="testControls"> 
+            <script id='tpl-control-bars' type='text/ractive'>
+
+                <h2>Controls for Progress Bar Test</h2>
+
+                <select id="selProgressBar" value='{{ selectedProgressBar }}'>
+                    {{#each progressBars:idx}}
+                    <option value={{ idx }}>{{displayName}}</option>
+                    {{/each}}
+                </select>
+
+                <div class="grpButtons">
+                    <div class="grpButtons">
+                        <button on-tap='minus:1'>&lt; -1</button>
+                        <button on-tap='plus:1'>+1 &gt;</button>
+                    </div>
+
+                    <div class="grpButtons">
+                        <button on-tap='minus:10'>&lt; -10</button>
+                        <button on-tap='plus:10'>+10 &gt;</button>
+                    </div>
+
+                    <div class="grpButtons">
+                        <button on-tap='minus:25'>&lt; -25</button>
+                        <button on-tap='plus:25'>+25 &gt;</button>
+                    </div>
+                </div>
+
+            </script>
+        </section>
+
+
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+        <script src='js/ractive-events-tap.umd.min.js'></script>
+        <script src="js/progressBarTest.min.js"></script>
+<!--
+        <script src='js/ractive-events-tap.umd.js'></script>
+        <script src="js/progressBarTest.js"></script>
+-->
+
+    </body>
+</html>
